@@ -1,16 +1,28 @@
-# React + Vite
+# UPI Finance Tracker Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+This is the React + Vite frontend for the UPI Finance Tracker app.
 
-Currently, two official plugins are available:
+## Features
+- Dashboard and analytics UI
+- UPI transaction upload and report views
+- Authentication and user pages
+- Responsive landing page and platform sections
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Run locally
+```bash
+npm install
+npm run dev
+```
 
-## React Compiler
+## Build for production
+```bash
+npm run build
+```
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Deployment
+This frontend is designed to be deployed on Vercel.
 
-## Expanding the Oxlint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+## Notes
+- App entry: `src/main.jsx`
+- Main routing and pages are in `src/pages/`
+- Styling and shared UI live in `src/components/` and `src/index.css`
