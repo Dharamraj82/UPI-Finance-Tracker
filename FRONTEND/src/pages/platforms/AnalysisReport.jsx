@@ -69,7 +69,8 @@ export default function AnalysisReport() {
   const cancelSession = async () => {
     if (!sessionId) return;
     try {
-      await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/v1/public/cancel/${sessionId}`, {
+      const apiBaseUrl = (import.meta.env.VITE_API_BASE_URL || '').replace(/\/+$/, '');
+      await fetch(`${apiBaseUrl}/api/v1/public/cancel/${sessionId}`, {
         method: 'DELETE',
         keepalive: true
       });
@@ -144,7 +145,8 @@ export default function AnalysisReport() {
     let pollInterval;
     const fetchData = async () => {
       try {
-        const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/v1/public/analysis/${sessionId}`);
+        const apiBaseUrl = (import.meta.env.VITE_API_BASE_URL || '').replace(/\/+$/, '');
+        const response = await fetch(`${apiBaseUrl}/api/v1/public/analysis/${sessionId}`);
         if (response.status === 404) {
           toast.error("Session expired or not found. Please upload your file again.", { duration: 5000 });
           navigate('/platform');

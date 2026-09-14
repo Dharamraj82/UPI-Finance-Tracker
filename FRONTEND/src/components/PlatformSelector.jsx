@@ -404,8 +404,9 @@ export default function PlatformSelector({ onUploadStateChange }) {
                           const formData = new FormData();
                           formData.append("file", selectedFile);
                           formData.append("platform", uploadPlatform.name);
+                          const apiBaseUrl = (import.meta.env.VITE_API_BASE_URL || '').replace(/\/+$/, '');
                           
-                          const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/v1/public/upload`, {
+                          const response = await fetch(`${apiBaseUrl}/api/v1/public/upload`, {
                             method: "POST",
                             body: formData
                           });
