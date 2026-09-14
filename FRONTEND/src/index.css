@@ -1,0 +1,95 @@
+@import url('https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap');
+@import "tailwindcss";
+
+* {
+  font-family: 'Geist', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  html, body {
+    font-family: 'Geist', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+    @apply bg-white text-slate-900 antialiased overflow-x-hidden min-h-screen relative;
+  }
+}
+
+@layer utilities {
+  .glass-panel {
+    @apply bg-white/70 backdrop-blur-2xl border border-white/60 shadow-[0_8px_30px_rgb(0,0,0,0.04)];
+  }
+  
+  .glass-card {
+    @apply bg-white border border-slate-100 shadow-sm hover:shadow-md transition-shadow duration-300 rounded-xl;
+  }
+
+  .text-glow {
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: rgba(203, 213, 225, 1); /* slate-300 */
+    border-radius: 4px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(148, 163, 184, 1); /* slate-400 */
+  }
+
+  .glass-shine-btn {
+    @apply relative overflow-hidden;
+  }
+  .glass-shine-btn::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.7) 50%, rgba(255,255,255,0) 100%);
+    transform: skewX(-20deg);
+    animation: glassShine 2.5s infinite;
+    pointer-events: none;
+    z-index: 10;
+  }
+}
+
+@keyframes glassShine {
+  0% { left: -100%; }
+  20% { left: 200%; }
+  100% { left: 200%; }
+}
+
+
+.border-beam {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.border-beam rect {
+  fill: none;
+  stroke: url(#beam);
+  stroke-width: 3;
+  stroke-linecap: round;
+
+  stroke-dasharray: 140 1200; /* only one visible beam */
+  animation: borderBeam 4s linear infinite;
+}
+
+@keyframes borderBeam {
+  from {
+    stroke-dashoffset: 0;
+  }
+  to {
+    stroke-dashoffset: -1340;
+  }
+}
